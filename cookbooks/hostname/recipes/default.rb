@@ -7,7 +7,8 @@
 
 #hname = node['ec2']['tags']['Name']
 
-execute 'test' do
-  command "echo #{node['ec2']['tags']['Name']} >> /home/ubuntu/test"
+execute 'set hostname' do
+  command "echo #{node['ec2']['tags']['Name']}.girnar.com >> /etc/hostname"
   action :run
+  not_if "cat /etc/hostname == #{node['ec2']['tags']['Name']}.girnar.com"
 end
