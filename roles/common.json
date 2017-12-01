@@ -25,6 +25,7 @@
   },
   "chef_type": "role",
   "run_list": [
+      "recipe[ec2-tags-ohai-plugin]",
       "recipe[selinux_conf]",
       "recipe[timezone]",
       "recipe[limits]",
