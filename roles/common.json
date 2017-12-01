@@ -25,7 +25,15 @@
   },
   "chef_type": "role",
   "run_list": [
-      "recipe[filebeat]"
+      "recipe[selinux_conf]",
+      "recipe[timezone]",
+      "recipe[limits]",
+      "recipe[basic_packages]",
+      "recipe[filebeat]",
+      "recipe[nginx]",
+      "recipe[zabbix]",
+      "recipe[awscli]"
+
   ]
 }
 
