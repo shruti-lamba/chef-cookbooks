@@ -13,6 +13,6 @@ execute 'set hostname' do
 end
 
 execute 'preserver hostname' do
-  command 'sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg'
+  command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
   action :run
 end
