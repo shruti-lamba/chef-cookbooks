@@ -1,0 +1,6 @@
+# frozen_string_literal: true
+source 'https://supermarket.chef.io'
+
+cookbook 'php', '~> 4.5.0'
+
+metadata

@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  require_chef_omnibus: 13.2.20
+  roles_path: roles/
+platforms:
+  - name: ubuntu-16.04
+  - name: centos-7.2
+
+suites:
+  - name: abcd
+
+    provisioner:
+      roles_path: roles
+
+    run_list:
+#      - recipe[timezone::default]
+#      - recipe[limits::default]
+#      - recipe[filebeat::default]
+#      - recipe[nginx::default]
+#       - recipe[php::default]
+#       - recipe[node::default]
+#       - recipe[selinux_conf::default]
+       - role[common]
+#       - recipe[zabbix::default]
+#      - recipe[awscli::default]
+    attributes:

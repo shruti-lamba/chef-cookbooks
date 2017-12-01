@@ -1,0 +1,31 @@
+{
+  "name": "common",
+  "description": "",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "selinux": {
+              "status": "disabled"
+         },
+        "filebeat": {
+             "configs" : [
+             {
+                 "logs": {
+                     "path": "/var/loh/nginx/access.log",
+                      "document_type": "nginx-access" 
+                   }
+             },
+             { 
+                  "logs": {
+                     "path": "/var/log/syslog",
+                      "document_type": "syslog"
+                   }            
+             }
+             ]
+  }
+  },
+  "chef_type": "role",
+  "run_list": [
+      "recipe[filebeat]"
+  ]
+}
+

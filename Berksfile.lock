@@ -1,0 +1,52 @@
+DEPENDENCIES
+  awscli
+    path: cookbooks/awscli
+  basic_packages
+    path: cookbooks/basic_packages
+  filebeat
+    path: cookbooks/filebeat
+  limits
+    path: cookbooks/limits
+  nginx
+    path: cookbooks/nginx
+  node
+    path: cookbooks/node
+  nvm (~> 0.1.7)
+  selinux (~> 2.1.0)
+  selinux_conf
+    path: cookbooks/selinux_conf
+  timezone
+    path: cookbooks/timezone
+  zabbix
+    path: cookbooks/zabbix
+
+GRAPH
+  awscli (0.1.0)
+  basic_packages (0.1.0)
+  build-essential (8.0.3)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  filebeat (0.1.0)
+  git (8.0.0)
+    build-essential (>= 0.0.0)
+    homebrew (>= 0.0.0)
+  homebrew (4.2.0)
+  limits (0.1.0)
+  mingw (2.0.1)
+    seven_zip (>= 0.0.0)
+  nginx (0.1.0)
+  node (0.1.0)
+    nvm (>= 0.0.0)
+  nvm (0.1.7)
+    build-essential (>= 0.0.0)
+    git (>= 0.0.0)
+  ohai (5.2.0)
+  selinux (2.1.0)
+  selinux_conf (0.1.0)
+    selinux (>= 0.0.0)
+  seven_zip (2.0.2)
+    windows (>= 1.2.2)
+  timezone (0.1.0)
+  windows (3.4.0)
+    ohai (>= 4.0.0)
+  zabbix (0.1.0)

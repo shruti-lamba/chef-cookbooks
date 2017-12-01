@@ -1,0 +1,21 @@
+{
+  "name": "common",
+  "description": "",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "selinux": {
+              "status": "disabled"
+         }
+  },
+  "chef_type": "role",
+  "run_list": [
+      "recipe[selinux_conf]",
+      "recipe[timezone]",
+      "recipe[limits]",
+      "recipe[basic_packages]",
+      "recipe[filebeat]",
+      "recipe[nginx]",
+     
+  ]
+}
+
