@@ -8,7 +8,6 @@
 #hname = node['ec2']['tags']['Name']
 
 execute 'set hostname' do
-  command "echo #{node['ec2']['tags']['Name']}.girnar.com >> /etc/hostname"
+  command "echo #{node['ec2']['tags']['Name']}.girnar.com > /etc/hostname && hostname #{node['ec2']['tags']['Name']}.girnar.com "
   action :run
-  not_if "cat /etc/hostname == #{node['ec2']['tags']['Name']}.girnar.com"
 end
