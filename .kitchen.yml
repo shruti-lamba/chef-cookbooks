@@ -24,7 +24,8 @@ suites:
 #       - recipe[php::default]
 #       - recipe[node::default]
 #       - recipe[selinux_conf::default]
-       - role[common]
+#       - role[common]
 #       - recipe[zabbix::default]
 #      - recipe[awscli::default]
+       - recipe[mongodb::default]
     attributes:

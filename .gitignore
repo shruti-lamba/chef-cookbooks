@@ -1,6 +1,6 @@
 # Chef
 .chef/*
-
+.kitchen.yml
 data_bags/*
 .kitchen/*
 

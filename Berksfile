@@ -14,5 +14,5 @@ cookbook 'limits', path: 'cookbooks/limits'
 cookbook 'filebeat', path: 'cookbooks/filebeat'
 cookbook 'zabbix', path: 'cookbooks/zabbix'
 cookbook 'awscli', path: 'cookbooks/awscli'
-
+cookbook 'mongodb', path:'cookbooks/mongodb'
 

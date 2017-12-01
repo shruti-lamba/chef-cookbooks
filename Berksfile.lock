@@ -3,10 +3,13 @@ DEPENDENCIES
     path: cookbooks/awscli
   basic_packages
     path: cookbooks/basic_packages
+  ec2-tags-ohai-plugin (~> 0.2.4)
   filebeat
     path: cookbooks/filebeat
   limits
     path: cookbooks/limits
+  mongodb
+    path: cookbooks/mongodb
   nginx
     path: cookbooks/nginx
   node
@@ -26,6 +29,8 @@ GRAPH
   build-essential (8.0.3)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
+  ec2-tags-ohai-plugin (0.2.4)
+    ohai (>= 4.0.0)
   filebeat (0.1.0)
   git (8.0.0)
     build-essential (>= 0.0.0)
@@ -34,6 +39,7 @@ GRAPH
   limits (0.1.0)
   mingw (2.0.1)
     seven_zip (>= 0.0.0)
+  mongodb (0.1.0)
   nginx (0.1.0)
   node (0.1.0)
     nvm (>= 0.0.0)
