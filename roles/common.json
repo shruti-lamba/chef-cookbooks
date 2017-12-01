@@ -31,7 +31,8 @@
       "recipe[basic_packages]",
       "recipe[filebeat]",
       "recipe[zabbix]",
-      "recipe[awscli]"
+      "recipe[awscli]",
+      "recipe[hostname]"
 
   ]
 }
