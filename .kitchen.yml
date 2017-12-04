@@ -8,7 +8,7 @@ provisioner:
   roles_path: roles/
 platforms:
   - name: ubuntu-16.04
-  - name: centos-7.2
+  - name: centos-7.3
 
 suites:
   - name: abcd
@@ -17,7 +17,7 @@ suites:
       roles_path: roles
 
     run_list:
-#      - recipe[timezone::default]
+#        - recipe[timezone::default]
 #      - recipe[limits::default]
 #      - recipe[filebeat::default]
 #      - recipe[nginx::default]
@@ -27,6 +27,7 @@ suites:
 #       - role[common]
 #       - recipe[zabbix::default]
 #      - recipe[awscli::default]
-#       - recipe[mongodb::default]
+#       - recipe[mongodb::default]a
+        - recipe[basic_packages::default]
         - recipe[host_name::default]
     attributes:

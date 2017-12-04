@@ -9,13 +9,23 @@
 if node['platform'] ==  'centos'
   bash 'add hostname' do
     user 'root'
-    cwd '/tmp'
     code <<-EOH
     sed -i "s/HOSTNAME=.*/#{node['ec2']['tags']['Name']}" /etc/sysconfig/network
     hostname #{node['ec2']['tags']['Name']}
-    echo "127.0.0.1 #{node['ec2']['tags']['Name']}.girnarsoft.net #{node['ec2']['tags']['Name']}"
     EOH
   end
+
+  hostsfile_entry '127.0.1.1' do
+    hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
+    unique true
+    action :append
+  end
+
+  hostsfile_entry '127.0.1.1' do
+    hostname  "#{node['ec2']['tags']['Name']}"
+    action :append
+  end
+
   execute 'preserver hostname' do
     command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
     action :run
@@ -28,15 +38,14 @@ execute 'set hostname' do
   action :run
 end
 
-execute 'preserver hostname' do
-  command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
-  action :run
+hostsfile_entry '127.0.1.1' do
+  hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
+  unique    true
+  action :append
 end
 
-hostsfile_entry 'set hostname' do
-   ip_address '127.0.1.1'
-   hostname "#{node['ec2']['tags']['Name']}.girnarsoft.net"
-   unique true
-   action    :append
+hostsfile_entry '127.0.1.1' do
+  hostname  "#{node['ec2']['tags']['Name']}"
+  action :append
 end
 end

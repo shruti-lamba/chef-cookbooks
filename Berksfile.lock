@@ -9,6 +9,7 @@ DEPENDENCIES
   host_name
     path: cookbooks/host_name
   hostname (~> 0.4.2)
+  hostsfile (~> 3.0.1)
   limits
     path: cookbooks/limits
   mongodb
@@ -41,7 +42,7 @@ GRAPH
   homebrew (4.2.0)
   host_name (0.1.0)
     ec2-tags-ohai-plugin (>= 0.0.0)
-    hostname (>= 0.0.0)
+    hostsfile (>= 0.0.0)
   hostname (0.4.2)
     hostsfile (>= 0.0.0)
   hostsfile (3.0.1)
