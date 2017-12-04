@@ -16,3 +16,10 @@ execute 'preserver hostname' do
   command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
   action :run
 end
+
+hostsfile_entry 'set hostname' do
+   ip_address '127.0.1.1'
+   hostname "#{node['ec2']['tags']['Name']}.girnar.com"
+   unique true
+   action    :append
+end

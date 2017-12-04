@@ -15,4 +15,6 @@ cookbook 'filebeat', path: 'cookbooks/filebeat'
 cookbook 'zabbix', path: 'cookbooks/zabbix'
 cookbook 'awscli', path: 'cookbooks/awscli'
 cookbook 'mongodb', path:'cookbooks/mongodb'
+cookbook 'hostname', '~> 0.4.2'
+cookbook 'host_name', path:'cookbooks/host_name'
 

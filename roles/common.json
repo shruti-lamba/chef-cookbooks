@@ -33,7 +33,7 @@
       "recipe[filebeat]",
       "recipe[zabbix]",
       "recipe[awscli]",
-      "recipe[hostname]"
+      "recipe[host_name]"
 
   ]
 }
