@@ -30,7 +30,7 @@ if node['platform'] == 'centos'
     code <<-EOH
     rm -f /etc/localtime;
     ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-    echo 'ZONE="Europe/Copenhagen"' > /etc/sysconfig/clock
+    echo 'ZONE="Asia/Kolkats"' > /etc/sysconfig/clock
     EOH
-  end  
+  end
 end
