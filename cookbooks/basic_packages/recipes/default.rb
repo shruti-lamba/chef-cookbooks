@@ -8,7 +8,7 @@ apt_update 'apt-get-update' do
 end
 
 if node['platform'] == 'centos'
-    remote_file '/opt/chef/file' do
+    remote_file '/opt/epel-release-6-8.noarch.rpm' do
       source 'wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm'
       owner 'root'
       group 'root'
