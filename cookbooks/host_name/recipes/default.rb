@@ -7,14 +7,11 @@
 
 #hname = node['ec2']['tags']['Name']
 if node['platform'] ==  'centos'
-  execute 'add hostname' do
-    command 'sed -i "s/HOSTNAME=.*/#{node['ec2']['tags']['Name']}" /etc/sysconfig/network'
-    action :run
-  end
-  bash 'a bash script' do
+  bash 'add hostname' do
     user 'root'
     cwd '/tmp'
     code <<-EOH
+    sed -i "s/HOSTNAME=.*/#{node['ec2']['tags']['Name']}" /etc/sysconfig/network
     hostname #{node['ec2']['tags']['Name']}
     echo "127.0.0.1 #{node['ec2']['tags']['Name']}.girnarsoft.net #{node['ec2']['tags']['Name']}"
     EOH
