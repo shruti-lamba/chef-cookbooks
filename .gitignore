@@ -3,7 +3,7 @@
 .kitchen.yml
 data_bags/*
 .kitchen/*
-
+.Berksfile.lock
 # Ruby
 .rake_test_cache
 .rvmrc
