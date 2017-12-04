@@ -28,6 +28,7 @@ suites:
 #       - recipe[zabbix::default]
 #      - recipe[awscli::default]
 #       - recipe[mongodb::default]a
-        - recipe[basic_packages::default]
-        - recipe[host_name::default]
+#        - recipe[basic_packages::default]
+#        - recipe[host_name::default]
+         - recipe[users::default]
     attributes:
