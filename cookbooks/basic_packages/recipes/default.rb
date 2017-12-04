@@ -15,9 +15,10 @@ if node['platform'] == 'centos'
       action :create_if_missing
       notifies :run, 'bash[add epel repo]'
     end
-    execute 'add epel repo' do
-      command 'rpm -Uvh /opt/epel-release-6*.rpm'
-      action :run
+    bash 'add epel repo' do
+      user 'root'
+      code 'rpm -Uvh /opt/epel-release-6*.rpm'
+      action :nothing
     end
     yum_package %w(gcc-c++ pcre-devel zlib-devel make wget openssl-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel gperftools-devel vim mlocate sysstat git) do
       action :install
