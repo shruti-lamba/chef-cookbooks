@@ -22,9 +22,15 @@ if ['debian','ubuntu'].member? node[:platform]
   end
 end
 
+
 if node['platform'] == 'centos'
   bash 'change timezone' do
-  user 'root'
-  code "timedatectl set-timezone Asia/Kolkata"
-  end
+    user 'root'
+    cwd '/tmp'
+    code <<-EOH
+    rm -f /etc/localtime;
+    ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+    echo 'ZONE="Europe/Copenhagen"' > /etc/sysconfig/clock
+    EOH
+  end  
 end
