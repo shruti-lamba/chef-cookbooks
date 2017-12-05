@@ -1,5 +1,5 @@
 {
-  "name": "common",
+  "name": "nginx",
   "description": "",
   "json_class": "Chef::Role",
   "chef_type": "role",
