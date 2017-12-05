@@ -19,3 +19,6 @@ cookbook 'hostname', '~> 0.4.2'
 cookbook 'host_name', path:'cookbooks/host_name'
 cookbook 'hostsfile', '~> 3.0.1'
 cookbook 'users', path: 'cookbooks/users'
+cookbook 'php', path: 'cookbooks/php'
+cookbook 'swap', '~> 2.1.0'
+

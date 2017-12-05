@@ -19,9 +19,12 @@ DEPENDENCIES
   node
     path: cookbooks/node
   nvm (~> 0.1.7)
+  php
+    path: cookbooks/php
   selinux (~> 2.1.0)
   selinux_conf
     path: cookbooks/selinux_conf
+  swap (~> 2.1.0)
   timezone
     path: cookbooks/timezone
   users
@@ -59,11 +62,16 @@ GRAPH
     build-essential (>= 0.0.0)
     git (>= 0.0.0)
   ohai (5.2.0)
+  php (0.1.0)
   selinux (2.1.0)
   selinux_conf (0.1.0)
     selinux (>= 0.0.0)
   seven_zip (2.0.2)
     windows (>= 1.2.2)
+  swap (2.1.0)
+    sysctl (>= 0.0.0)
+  sysctl (0.10.2)
+    ohai (>= 4.0)
   timezone (0.1.0)
   users (0.1.0)
   windows (3.4.0)

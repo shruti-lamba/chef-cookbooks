@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "description": "",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "php": {
+              "version": "7.2"
+         }
+   },
+  "chef_type": "role",
+  "run_list": [
+      "recipe[php]"
+  ]
+}
+

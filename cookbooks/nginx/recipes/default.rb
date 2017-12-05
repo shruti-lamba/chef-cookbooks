@@ -1,1 +1,1 @@
-include_recipe 'nginx::nginx-install'
+include_recipe 'nginx::install-apt'

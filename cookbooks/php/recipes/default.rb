@@ -3,54 +3,41 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
-remote_file '/opt/php-7.1.12.tar.gz' do
-  source 'http://in1.php.net/get/php-7.1.12.tar.gz/from/this/mirror'
-  owner 'root'
-  group 'root'
-  action :create_if_missing
+if node['platform'] == 'ubuntu'
+apt_repository 'php' do
+  uri 'ppa:ondrej/php'
+  distribution node["lsb"]["codename"]
 end
 
-package %w(build-essential autoconf bison libtool flex libbz2-dev curl libcurl4-gnutls-dev librtmp-dev libmcrypt-dev) do
+apt_update 'apt-get-update' do
+  action :update
+end
+
+package 'php7.1' do
   action :install
 end
+end
 
-bash 'compile php' do
-  code <<-EOH
-    cd /opt
-    tar -zxvf php-7.1.12.tar.gz
-    cd php-7.1.12
-    ./configure \
---prefix=/usr \
---with-config-file-path=/etc \
---enable-mbstring \
---enable-zip \
---enable-bcmath \
---enable-pcntl \
---enable-ftp \
---enable-exif \
---enable-calendar \
---enable-sysvmsg \
---enable-sysvsem \
---enable-sysvshm \
---enable-wddx \
---with-curl \
---with-mcrypt \
---with-iconv \
---with-gmp \
---with-gd \
---with-jpeg-dir=/usr \
---with-png-dir=/usr \
---with-zlib-dir=/usr \
---with-xpm-dir=/usr \
---with-freetype-dir=/usr \
---enable-gd-native-ttf \
---enable-gd-jis-conv \
---with-openssl \
---with-gettext=/usr \
---with-zlib=/usr \
---with-bz2=/usr \
---with-recode=/usr
-    make
-    make install
- EOH
+if node['platform'] == 'centos'
+  remote_file '/opt/epel-release-latest-7.noarch.rpm' do
+    source 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+    owner 'root'
+    group 'root'
+  end
+  rpm_package 'install rpm packacge' do
+    action :install
+    source '/opt/epel-release-latest-7.noarch.rpm'
+  end
+  remote_file '/opt/webtatic-release.rpm' do
+    source 'https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
+    owner 'root'
+    group 'root'
+  end
+  rpm_package 'install rpm package' do
+    action :install
+    source '/opt/webtatic-release.rpm'
+  end
+  yum_package 'php71w' do
+    action :install
+  end
 end

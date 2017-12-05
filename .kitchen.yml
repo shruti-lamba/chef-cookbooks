@@ -20,7 +20,8 @@ suites:
 #        - recipe[timezone::default]
 #      - recipe[limits::default]
 #      - recipe[filebeat::default]
-#      - recipe[nginx::default]
+      - recipe[basic_packages::default]
+      - recipe[nginx::default]
 #       - recipe[php::default]
 #       - recipe[node::default]
 #       - recipe[selinux_conf::default]
@@ -30,5 +31,6 @@ suites:
 #       - recipe[mongodb::default]a
 #        - recipe[basic_packages::default]
 #        - recipe[host_name::default]
-         - recipe[users::default]
+#         - recipe[users::default]
+      - recipe[php::default]
     attributes:
