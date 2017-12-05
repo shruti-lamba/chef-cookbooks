@@ -18,7 +18,6 @@ if node['platform'] ==  'centos'
   hostsfile_entry '127.0.1.1' do
     hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
     unique true
-    action :append
   end
 
   hostsfile_entry '127.0.1.1' do
