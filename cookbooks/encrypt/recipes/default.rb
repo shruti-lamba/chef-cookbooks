@@ -11,7 +11,7 @@ end
 bash 'add entry to client.rb' do
   user 'root'
   code <<-EOH
-  echo 'encrypted_data_bag_secret "/etc/chef/secret_key"'
+  echo 'encrypted_data_bag_secret "/etc/chef/secret_key"' >> /etc/chef/client.rb
   EOH
   action :nothing
 end
