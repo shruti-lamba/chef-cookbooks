@@ -5,6 +5,12 @@ template '/etc/zabbix/zabbix_agentd.conf' do
   mode 00744
 end
 
+if node['platform'] == 'centos'
+  execute 'selinux permissive' do
+    command 'setenforce 0'
+    action :run
+  end
+end
 service 'zabbix-agent' do
   action :restart
 end
