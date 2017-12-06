@@ -19,7 +19,7 @@ suites:
     run_list:
 #        - recipe[timezone::default]
 #      - recipe[limits::default]
-      - recipe[chrony::default]
+#      - recipe[chrony::default]
 #      - recipe[filebeat::default]
 #      - recipe[basic_packages::default]
 #      - recipe[nginx::default]
@@ -32,6 +32,6 @@ suites:
 #       - recipe[mongodb::default]a
 #        - recipe[basic_packages::default]
 #        - recipe[host_name::default]
-#         - recipe[users::default]
+         - recipe[users::default]
 #      - recipe[php::default]
     attributes:

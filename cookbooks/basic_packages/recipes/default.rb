@@ -28,6 +28,17 @@ if node['platform'] == 'centos'
     source "#{node['centos']['webstatic-release-path']}"
   end
 
+  remote_file "#{node['ssm-agent']['path']}" do
+    source "#{node['ssm-agent']['url']}"
+    owner 'root'
+    group 'root'
+  end
+
+  rpm_package 'install ssm agent' do
+    action :install
+    source "#{node['ssm-agent']['path']}"
+  end
+
   #execute 'yum update' do
   #  command "yum update -y"
   #  action :run
@@ -37,6 +48,17 @@ end
 if node['platform'] == 'ubuntu'
   apt_update 'apt-get-update' do
     action :update
+  end
+
+  remote_file "#{node['ssm-agent']['path']}" do
+    source "#{node['ssm-agent']['url']}"
+    owner 'root'
+    group 'root'
+  end
+
+  dpkg_package 'install ssm agent' do
+    action :install
+    source "#{node['ssm-agent']['path']}"
   end
 end
 
