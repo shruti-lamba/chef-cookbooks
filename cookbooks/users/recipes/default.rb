@@ -48,7 +48,7 @@ home = "/data"
 password = userdata['password']
 enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
 
-user "#{usern}" do
+user "#{username}" do
       shell '/bin/bash'
       home      home
       manage_home  true
@@ -57,7 +57,7 @@ end
 
 directory "#{home}/.ssh" do
       mode '0700'
-      owner "#{usern}"
+      owner "#{username}"
       recursive true
 end
 
