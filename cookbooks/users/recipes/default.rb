@@ -40,28 +40,30 @@ end
 #end
 
 
-users.each do |login|
-  userdata = data_bag_item('users', login)
-  home = "/home/#{login}"
-    password = userdata['password']
-    enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
-    user(login) do
+#users.each do |login|
+
+username = "#{node['ec2']['tags']['Name']}".split('-')[0].downcase
+userdata = data_bag_item("users", "#{username}")
+home = "/data"
+password = userdata['password']
+enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
+
+user "#{usern}" do
       shell '/bin/bash'
       home      home
       manage_home  true
       password "#{enc_password}"
-    end
+end
 
-    directory "#{home}/.ssh" do
+directory "#{home}/.ssh" do
       mode '0700'
-      owner login
+      owner "#{usern}"
       recursive true
-    end
+end
 
-    file "#{home}/.ssh/authorized_keys" do
+userdata = data_bag_item("users", "jenkins")
+file "#{home}/.ssh/authorized_keys" do
       mode '0600'
-      owner login
+      owner "#{username}"
       content userdata['ssh_public_key']
-    end
-
 end
