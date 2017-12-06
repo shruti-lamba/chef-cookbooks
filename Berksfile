@@ -21,4 +21,5 @@ cookbook 'hostsfile', '~> 3.0.1'
 cookbook 'users', path: 'cookbooks/users'
 cookbook 'php', path: 'cookbooks/php'
 cookbook 'swap', '~> 2.1.0'
+cookbook 'chrony', path: 'cookbooks/chrony'
 

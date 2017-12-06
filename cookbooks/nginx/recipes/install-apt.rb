@@ -1,21 +1,21 @@
 if node['platform'] == 'ubuntu'
-apt_repository 'nginx' do
-  uri 'ppa:nginx/stable'
-  distribution node["lsb"]["codename"]
+  apt_repository 'nginx' do
+    uri 'ppa:nginx/stable'
+    distribution node["lsb"]["codename"]
+  end
+
+  apt_update 'apt-get-update' do
+    action :update
+  end
 end
 
-apt_update 'apt-get-update' do
-  action :update
-end
 package 'nginx' do
   action :install
-  version '1.12.1-0+xenial0'
-end
-end
+  version "#{node['nginx']['version']}"
+ end
 
-if node['platform'] == 'centos'
-  yum_package 'nginx' do
-    action :install
-    version '1.12.2-1.el7'
-  end
+execute 'enble and start service' do
+  command 'systemctl start nginx.service && systemctl enable nginx.service'
+  action :run
+  not_if "systemctl -q is-active nginx.service"
 end

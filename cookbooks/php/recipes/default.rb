@@ -12,32 +12,23 @@ end
 apt_update 'apt-get-update' do
   action :update
 end
-
-package 'php7.1' do
-  action :install
-end
 end
 
-if node['platform'] == 'centos'
-  remote_file '/opt/epel-release-latest-7.noarch.rpm' do
-    source 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
-    owner 'root'
-    group 'root'
+node['php']['packages'].each do |pkg|
+ package pkg do
+   action :install
+ end
+end
+
+execute 'start & enable service' do
+  if node['platform'] == 'ubuntu'
+    command "systemctl start php#{node['php']['version']}-fpm.service && systemctl enable php#{node['php']['version']}-fpm.service"
+    action :run
+    not_if "systemctl -q is-active php#{node['php']['version']}-fpm.service"
   end
-  rpm_package 'install rpm packacge' do
-    action :install
-    source '/opt/epel-release-latest-7.noarch.rpm'
-  end
-  remote_file '/opt/webtatic-release.rpm' do
-    source 'https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
-    owner 'root'
-    group 'root'
-  end
-  rpm_package 'install rpm package' do
-    action :install
-    source '/opt/webtatic-release.rpm'
-  end
-  yum_package 'php71w' do
-    action :install
+  if node['platform'] == 'centos'
+    command "systemctl start php-fpm.service && systemctl enable php-fpm.service"
+    action :run
+    not_if "systemctl -q is-active php-fpm.service"
   end
 end
