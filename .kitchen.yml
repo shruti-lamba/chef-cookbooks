@@ -32,6 +32,7 @@ suites:
 #       - recipe[mongodb::default]a
 #        - recipe[basic_packages::default]
 #        - recipe[host_name::default]
-         - recipe[users::default]
+#         - recipe[users::default]
+       -  recipe[encrypt::default]
 #      - recipe[php::default]
     attributes:

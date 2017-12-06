@@ -22,4 +22,4 @@ cookbook 'users', path: 'cookbooks/users'
 cookbook 'php', path: 'cookbooks/php'
 cookbook 'swap', '~> 2.1.0'
 cookbook 'chrony', path: 'cookbooks/chrony'
-
+cookbook 'encrypt', path: 'cookbooks/encrypt'
