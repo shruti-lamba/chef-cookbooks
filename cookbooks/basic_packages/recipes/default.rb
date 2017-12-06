@@ -18,7 +18,7 @@ if node['platform'] == 'centos'
   end
 
   remote_file "#{node['centos']['webstatic-release-path']}" do
-    source "#{node['centos']['epel-release-url']}"
+    source "#{node['centos']['webstatic-release-url']}"
     owner 'root'
     group 'root'
   end
@@ -39,10 +39,10 @@ if node['platform'] == 'centos'
     source "#{node['ssm-agent']['path']}"
   end
 
-  #execute 'yum update' do
-  #  command "yum update -y"
-  #  action :run
-  #end
+  execute 'yum update' do
+    command "yum update -y"
+    action :run
+  end
 end
 
 if node['platform'] == 'ubuntu'

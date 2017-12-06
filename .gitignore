@@ -4,7 +4,7 @@
 data_bags/*
 .kitchen/*
 .Berksfile.lock
-secret_key
+my_secret_key
 # Ruby
 .rake_test_cache
 .rvmrc

@@ -1,10 +1,10 @@
 {
-  "name": "common",
+  "name": "php",
   "description": "",
   "json_class": "Chef::Role",
   "override_attributes": {
         "php": {
-              "version": "7.2"
+              "version": "7.1"
          }
    },
   "chef_type": "role",
