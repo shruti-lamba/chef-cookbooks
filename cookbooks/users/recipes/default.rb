@@ -43,8 +43,9 @@ end
 #users.each do |login|
 
 username = "#{node['ec2']['tags']['Name']}".split('-')[0].downcase
+#username = "test"
 userdata = data_bag_item("users", "#{username}")
-home = "/data"
+home = "/data/#{username}"
 password = userdata['password']
 enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
 
