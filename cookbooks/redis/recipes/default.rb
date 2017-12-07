@@ -26,7 +26,12 @@ bash 'a bash script' do
   not_if { File.exist?("/etc/init.d/redis_6379") }
 end
 
-
+template '/etc/redis/6379.conf' do
+  source '6379.conf.erb'
+  owner 'root'
+  group 'root'
+  mode 00744
+end
 execute 'start redis' do
   command 'systemctl start redis_6379'
   action :run
