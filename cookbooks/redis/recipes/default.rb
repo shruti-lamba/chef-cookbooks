@@ -21,12 +21,18 @@ bash 'a bash script' do
   make
   make install
   cd utils
-  echo -ne '\n' | bash install_server.sh
+  bash install_server.sh <<!
+  6379
+  /etc/redis/redis.conf
+  /var/log/redis.log
+  /var/lib/redis/redis
+  /usr/local/bin/redis-server
+  !
   EOH
   not_if { File.exist?("/etc/init.d/redis_6379") }
 end
 
-template '/etc/redis/6379.conf' do
+template '/etc/redis/redis.conf' do
   source '6379.conf.erb'
   owner 'root'
   group 'root'
