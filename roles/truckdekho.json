@@ -1,0 +1,14 @@
+{
+  "name": "truckdekho",
+  "description": "",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "php": {
+              "version": "7.1"
+         }
+   },
+  "chef_type": "role",
+  "run_list": [
+  ]
+}
+

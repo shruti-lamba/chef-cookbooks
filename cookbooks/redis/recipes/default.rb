@@ -17,7 +17,7 @@ bash 'a bash script' do
   cd redis-3.2.11
   cd deps
   make hiredis lua jemalloc linenoise geohash-int
-  cd ..
+  cd /opt/redis-3.2.11
   make
   make install
   cd utils
