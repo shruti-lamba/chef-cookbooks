@@ -21,6 +21,13 @@ bash 'a bash script' do
   make
   make install
   cd utils
-  bash install_server.sh
+  echo -ne '\n' | bash install_server.sh
   EOH
+  not_if { File.exist?("/etc/init.d/redis_6379") }
+end
+
+
+execute 'start redis' do
+  command 'systemctl start redis_6379'
+  action :run
 end
