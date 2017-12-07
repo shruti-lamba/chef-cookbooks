@@ -39,6 +39,6 @@ template '/etc/redis/redis.conf' do
   mode 00744
 end
 execute 'start redis' do
-  command 'systemctl start redis_6379'
+  command 'systemctl restart redis_6379'
   action :run
 end
