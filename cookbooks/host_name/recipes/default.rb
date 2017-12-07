@@ -28,7 +28,7 @@ if node['platform'] ==  'centos'
   execute 'preserver hostname' do
     command 'echo "preserve_hostname: true" >> /etc/cloud/cloud.cfg'
     action :run
-    only_if 'grep -Fq "preserve_hostname" /etc/cloud/cloud.cfg' 
+    not_if { File.readlines("/etc/cloud/cloud.cfg").grep(/preserve_hostname/).size > 0 }
   end
 end
 
