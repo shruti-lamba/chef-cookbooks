@@ -26,8 +26,9 @@ if node['platform'] ==  'centos'
   end
 
   execute 'preserver hostname' do
-    command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
+    command 'echo "preserve_hostname: true" >> /etc/cloud/cloud.cfg'
     action :run
+    not_if "! grep -Fq "preserve_hostname" >> /etc/cloud/cloud.cfg " 
   end
 end
 
@@ -45,5 +46,10 @@ end
 hostsfile_entry '127.0.1.1' do
   hostname  "#{node['ec2']['tags']['Name']}"
   action :append
+end
+
+execute 'preserver hostname' do
+  command "sed -i 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg"
+  action :run
 end
 end

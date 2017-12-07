@@ -33,6 +33,6 @@ suites:
 #        - recipe[basic_packages::default]
 #        - recipe[host_name::default]
 #         - recipe[users::default]
-       -  recipe[encrypt::default]
+       -  recipe[redis::default]
 #      - recipe[php::default]
     attributes:
