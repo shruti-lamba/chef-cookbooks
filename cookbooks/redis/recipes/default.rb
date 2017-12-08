@@ -7,6 +7,7 @@ remote_file '/opt/redis-3.2.11.tar.gz' do
   source 'https://s3.ap-south-1.amazonaws.com/girnarsoft-installs/redis-3.2.11.tar.gz'
   owner 'root'
   group 'root'
+  action :create_if_missing
 end
 
 bash 'a bash script' do

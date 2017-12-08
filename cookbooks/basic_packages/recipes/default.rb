@@ -32,11 +32,13 @@ if node['platform'] == 'centos'
     source "#{node['ssm-agent']['url']}"
     owner 'root'
     group 'root'
+    action :create_if_missing
   end
 
   rpm_package 'install ssm agent' do
     action :install
     source "#{node['ssm-agent']['path']}"
+    notifies :run, 'execute[start and enable ssm agent]'
   end
 
   execute 'yum update' do
@@ -59,6 +61,7 @@ if node['platform'] == 'ubuntu'
   dpkg_package 'install ssm agent' do
     action :install
     source "#{node['ssm-agent']['path']}"
+    notifies :run, 'execute[start and enable ssm agent]'
   end
 end
 
@@ -66,4 +69,9 @@ node['common']['packages'].each do |pkg|
   package pkg do
     action :install
   end
+end
+
+execute 'start and enable ssm agent' do
+  command 'sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent'
+  action :run
 end
