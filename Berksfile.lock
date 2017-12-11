@@ -27,6 +27,8 @@ DEPENDENCIES
   nvm (~> 0.1.7)
   php
     path: cookbooks/php
+  rabbitmq
+    path: cookbooks/rabbitmq
   redis
     path: cookbooks/redis
   selinux (~> 2.1.0)
@@ -74,6 +76,7 @@ GRAPH
     git (>= 0.0.0)
   ohai (5.2.0)
   php (0.1.0)
+  rabbitmq (0.1.0)
   redis (0.1.0)
   selinux (2.1.0)
   selinux_conf (0.1.0)
