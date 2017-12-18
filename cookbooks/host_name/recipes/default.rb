@@ -7,14 +7,6 @@
 
 #hname = node['ec2']['tags']['Name']
 if node['platform'] ==  'centos'
-  bash 'add hostname' do
-    user 'root'
-    code <<-EOH
-    sed -i "s/HOSTNAME=.*/#{node['ec2']['tags']['Name']}" /etc/sysconfig/network
-    hostname #{node['ec2']['tags']['Name']}
-    EOH
-  end
-
   hostsfile_entry '127.0.1.1' do
     hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
     unique true
@@ -23,6 +15,11 @@ if node['platform'] ==  'centos'
   hostsfile_entry '127.0.1.1' do
     hostname  "#{node['ec2']['tags']['Name']}"
     action :append
+  end
+
+  execute 'set hostname' do
+    command "hostnamectl set-hostname #{node['ec2']['tags']['Name']}"
+    action :run
   end
 
   execute 'preserver hostname' do
