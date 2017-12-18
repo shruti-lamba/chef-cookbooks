@@ -22,6 +22,13 @@ template '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi' do
   mode 00744
 end
 
+template '/etc/yum.repos.d/remi.repo' do
+  source 'remi-repo.erb'
+  owner 'root'
+  group 'root'
+  mode 00744
+end
+
 if "#{node['php']['version']}" == '7.1'
 template '/etc/yum.repos.d/remi-php71.repo' do
   source 'remi-php71.erb'
