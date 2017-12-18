@@ -15,45 +15,14 @@ end
 end
 
 if node['platform'] == 'centos'
-  remote_file "#{node['remi-repo']['path']}" do
-    source "#{node['remi-repo']['url']}"
-    owner 'root'
-    group 'root'
-  end
+template '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi' do
+  source 'RPM-GPG-KEY-remi.erb'
+  owner 'root'
+  group 'root'
+  mode 00744
+end
 
-  rpm_package 'install remi repo' do
-    action :install
-    source "#{node['remi-repo']['url']}"
-  end
-
-#  bash 'enable repo' do
-#    user 'root'
-#    if node['php']['version'] == 7.1
-#    code <<-EOH
-#    yum-config-manager --enable remi-php71
-#    EOH
-#    end
-#    if node['php']['version'] == 5.6
-#    code <<-EOH
-#    yum-config-manager --enable remi-php56
-#    EOH
-#    end
-#    action :run
-#  end
-
-#  execute 'enable remi' do
-#    if node['php']['version'] == 7.1
-#      command 'yum --enable remi-php71'
-#    end
-#    if node['php']['version'] == 5.6
-#      command 'yum-config-manager --enable remi-php56'
-#    end
-#    action :run
-#  end
-#yum_package 'remi-php71' do
-#  enabled  :True
-#end
-if node['php']['version'] == 7.1
+if "#{node['php']['version']}" == '7.1'
 template '/etc/yum.repos.d/remi-php71.repo' do
   source 'remi-php71.erb'
   owner 'root'
@@ -62,7 +31,7 @@ template '/etc/yum.repos.d/remi-php71.repo' do
 end
 end
 
-if node['php']['version'] == 5.6
+if "#{node['php']['version']}" == '5.6'
   template '/etc/yum.repos.d/remi-php56.repo' do
     source 'remi-php56.erb'
     owner 'root'
@@ -76,6 +45,7 @@ end
 node['php']['packages'].each do |pkg|
  package pkg do
    action :install
+   flush_cache before: true
  end
 end
 

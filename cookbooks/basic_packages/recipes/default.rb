@@ -17,17 +17,6 @@ if node['platform'] == 'centos'
     source "#{node['centos']['epel-release-path']}"
   end
 
-  remote_file "#{node['centos']['webstatic-release-path']}" do
-    source "#{node['centos']['webstatic-release-url']}"
-    owner 'root'
-    group 'root'
-  end
-
-  rpm_package 'install webstatic-release rpm package' do
-    action :install
-    source "#{node['centos']['webstatic-release-path']}"
-  end
-
   remote_file "#{node['ssm-agent']['path']}" do
     source "#{node['ssm-agent']['url']}"
     owner 'root'
@@ -65,11 +54,9 @@ if node['platform'] == 'ubuntu'
   end
 end
 
-node['common']['packages'].each do |pkg|
-  package pkg do
+  package "#{node['common']['packages']}" do
     action :install
   end
-end
 
 execute 'start and enable ssm agent' do
   command 'sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent'
