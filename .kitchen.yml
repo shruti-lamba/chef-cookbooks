@@ -35,7 +35,7 @@ suites:
 #         - recipe[users::default]
 #       -  recipe[redis::default]
 #      - recipe[php::default]
-       - role[php]
+#       - role[php]
 #      - recipe[httpd::default]
 #      - recipe[rabbitmq::default]
     attributes:
