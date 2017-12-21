@@ -49,11 +49,12 @@ end
 
 end
 
-
- package "#{node['php']['packages']}" do
+node['php']['packages'].each do |pkg|
+ package pkg do
    action :install
    flush_cache before: true
  end
+end
 
 execute 'start & enable service' do
   if node['platform'] == 'ubuntu'
