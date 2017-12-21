@@ -49,7 +49,8 @@ end
 
 end
 
- package "%w(#{node['php']['packages']})" do
+
+ package "(#{node['php']['packages']}" do
    action :install
    flush_cache before: true
  end
