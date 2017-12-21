@@ -54,9 +54,11 @@ if node['platform'] == 'ubuntu'
   end
 end
 
-  package "#{node['common']['packages']}" do
+node['common']['packages'].each do |pkg|
+  package pkg do
     action :install
   end
+end
 
 execute 'start and enable ssm agent' do
   command 'sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent'
