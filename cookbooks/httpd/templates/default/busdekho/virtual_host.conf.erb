@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+        DocumentRoot <%= @docroot %>
+        ServerName <%= @server_name %>
+        ServerAlias <%= @server_aliases.join " " %>
+        /<Directory <%= @docroot %> />
+                AllowOverride All
+                Require all granted
+        </Directory>
+        ErrorLog <%= @error_log %>
+        CustomLog <%= @access_log %> common
+</VirtualHost>
