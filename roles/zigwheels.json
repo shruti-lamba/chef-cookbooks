@@ -15,7 +15,7 @@
   "run_list": [
      "recipe[users]",
      "recipe[php]",
-     "recipe[httpd]
+     "recipe[httpd]"
   ]
 }
 
