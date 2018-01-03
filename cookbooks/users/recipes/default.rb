@@ -34,7 +34,7 @@ end
 
 userdata = data_bag_item("users", "jenkins")
 file "#{home}/.ssh/authorized_keys" do
-      mode '0600'3
+      mode '0600'
       owner "#{username}"
       content userdata['ssh_public_key']
 end
