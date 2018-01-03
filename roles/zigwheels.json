@@ -1,0 +1,19 @@
+{
+  "name": "zigwheels",
+  "description": "zigwheels role",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "php": {
+              "version": "5.6"
+         },
+        "users": {
+              "name": "zigwheels"
+        }
+        
+   },
+  "chef_type": "role",
+  "run_list": [
+     "recipe[users]"
+  ]
+}
+
