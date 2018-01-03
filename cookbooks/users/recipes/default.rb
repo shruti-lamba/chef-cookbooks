@@ -9,7 +9,7 @@
 users = data_bag('users')
 
 execute 'enable_passwordauthentication' do
-  command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config"
+  command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config && sudo service sshd restart"
   only_if "grep 'PasswordAuthentication no' /etc/ssh/sshd_config"
 end
 
