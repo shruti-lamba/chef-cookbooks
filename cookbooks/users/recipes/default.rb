@@ -8,52 +8,22 @@
 #
 users = data_bag('users')
 
-#Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
-
-#password = 'xyz'
-#salt = random_password(length: 10)
-#crypt_password = password.crypt("$6$#{salt}")
-
-#user 'newuser' do
-#  password crypt_password
-#end
-#Enable PasswordAuthentication
 execute 'enable_passwordauthentication' do
   command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config"
   only_if "grep 'PasswordAuthentication no' /etc/ssh/sshd_config"
 end
 
 
-
-
-
-
-#user 'cardekho' do
-#  home '/home/cardekho'
-#  shell '/bin/bash'
-#  manage_home true
-#end
-
-#execute 'add sudoers entry' do
-#  command 'echo "cardekho            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers'
-#  action :run
-#end
-
-
-#users.each do |login|
-
-username = "#{node['ec2']['tags']['Name']}".split('-')[0].downcase
-#username = "test"
-userdata = data_bag_item("users", "#{username}")
+username = "#{node['users']['name']}"
+#userdata = data_bag_item("users", "#{username}")
 home = "/data/#{username}"
-password = userdata['password']
-enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
+#password = userdata['password']
+#enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
 
 user "#{username}" do
       shell '/bin/bash'
-      home      home
+      home      "#{home}"
       manage_home  true
-      password "#{enc_password}"
 end
 
 directory "#{home}/.ssh" do

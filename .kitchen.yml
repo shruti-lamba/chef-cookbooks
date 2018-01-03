@@ -33,9 +33,9 @@ suites:
 #       - recipe[basic_packages::default]
 #        - recipe[host_name::default]
 #         - recipe[users::default]
-#       -  recipe[redis::default]
+#      -  recipe[redis::default]
 #      - recipe[php::default]
-#       - role[php]
+       - role[truckdekho]
 #      - recipe[httpd::default]
 #      - recipe[rabbitmq::default]
     attributes:

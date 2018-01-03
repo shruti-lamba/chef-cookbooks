@@ -1,14 +1,19 @@
 {
   "name": "truckdekho",
-  "description": "",
+  "description": "truckdekho role",
   "json_class": "Chef::Role",
   "override_attributes": {
         "php": {
               "version": "7.1"
-         }
+         },
+        "users": {
+              "name": "truckdekho"
+        }
+        
    },
   "chef_type": "role",
   "run_list": [
+     "recipe[users]"
   ]
 }
 
