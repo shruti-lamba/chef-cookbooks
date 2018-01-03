@@ -8,10 +8,10 @@
 #
 users = data_bag('users')
 
-execute 'enable_passwordauthentication' do
-  command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config && sudo service sshd restart"
-  only_if "grep 'PasswordAuthentication no' /etc/ssh/sshd_config"
-end
+#execute 'enable_passwordauthentication' do
+#  command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config && sudo service sshd restart"
+#  only_if "grep 'PasswordAuthentication no' /etc/ssh/sshd_config"
+#end
 
 
 username = "#{node['users']['name']}"
@@ -22,8 +22,8 @@ home = "/data/#{username}"
 
 user "#{username}" do
       shell '/bin/bash'
-      home      "#{home}"
-      manage_home  true
+      home  home
+      manage_home true
 end
 
 directory "#{home}/.ssh" do
@@ -34,7 +34,7 @@ end
 
 userdata = data_bag_item("users", "jenkins")
 file "#{home}/.ssh/authorized_keys" do
-      mode '0600'
+      mode '0600'3
       owner "#{username}"
       content userdata['ssh_public_key']
 end
