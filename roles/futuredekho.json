@@ -1,0 +1,19 @@
+{
+  "name": "futuredekho",
+  "description": "futuredekho role",
+  "json_class": "Chef::Role",
+  "override_attributes": {
+        "php": {
+              "version": "7.1"
+         },
+        "users": {
+              "name": "futuredekho"
+        }
+        
+   },
+  "chef_type": "role",
+  "run_list": [
+     "recipe[users]"
+  ]
+}
+
