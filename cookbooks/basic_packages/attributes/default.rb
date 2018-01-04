@@ -5,7 +5,7 @@ if node['platform'] == 'ubuntu'
 end
 
 if node['platform'] == 'centos'
-  default['common']['packages'] = %w(bash-completion yum-utils bash-completion-extras gcc-c++ pcre-devel tcl zlib-devel make wget openssl-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel gperftools-devel vim mlocate sysstat git)
+  default['common']['packages'] = %w(telnet bash-completion yum-utils bash-completion-extras gcc-c++ pcre-devel tcl zlib-devel make wget openssl-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel gperftools-devel vim mlocate sysstat git)
   default['ssm-agent']['url'] = "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_386/amazon-ssm-agent.rpm"
   default['ssm-agent']['path'] = "/opt/amazon-ssm-agent.rpm"
 end

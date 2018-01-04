@@ -29,11 +29,6 @@ if node['platform'] == 'centos'
     source "#{node['ssm-agent']['path']}"
     notifies :run, 'execute[start and enable ssm agent]'
   end
-
-  execute 'yum update' do
-    command "yum update -y"
-    action :run
-  end
 end
 
 if node['platform'] == 'ubuntu'
