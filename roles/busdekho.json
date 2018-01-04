@@ -2,7 +2,7 @@
   "name": "busdekho",
   "description": "busdekho role",
   "json_class": "Chef::Role",
-  "attributes": {
+  "default_attributes": {
         "php": {
               "version": "7.1"
          },
