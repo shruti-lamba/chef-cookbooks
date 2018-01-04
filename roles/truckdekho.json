@@ -56,6 +56,7 @@
    },
   "chef_type": "role",
   "run_list": [
+     "recipe[httpd::truckdekho-common-conf]",
      "recipe[httpd::truckdekho-conf]"
   ]
 }
