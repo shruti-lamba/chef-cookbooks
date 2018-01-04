@@ -8,17 +8,19 @@
 #
 users = data_bag('users')
 
-#execute 'enable_passwordauthentication' do
-#  command "sed 's/PasswordAuthentication\ no/PasswordAuthentication\ yes/g' -i /etc/ssh/sshd_config && sudo service sshd restart"
-#  only_if "grep 'PasswordAuthentication no' /etc/ssh/sshd_config"
-#end
+execute 'enable_passwordauthentication' do
+  command "sed 's/PasswordAuthentication\ yes/PasswordAuthentication\ no/g' -i /etc/ssh/sshd_config && sudo service sshd restart"
+  only_if "grep 'PasswordAuthentication yes' /etc/ssh/sshd_config"
+end
 
 
-username = "#{node['users']['name']}"
-#userdata = data_bag_item("users", "#{username}")
+username = "#{node['ec2']['tags']['Name']}".split('-')[0].downcase
+
+if "#{username}" == "connecto"
+  username = "cardekho"
+end
+
 home = "/data/#{username}"
-#password = userdata['password']
-#enc_password = `openssl passwd -1 "#{password}" | tr -d '\n'`
 
 user "#{username}" do
       shell '/bin/bash'
