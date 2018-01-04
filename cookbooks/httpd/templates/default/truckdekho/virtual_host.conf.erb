@@ -15,4 +15,12 @@
         </Directory>
         ErrorLog /var/log/httpd/<%= @error_log %>
         CustomLog /var/log/httpd/<%= @access_log %> common
+        <% if @directory_match == true -%>
+        <DirectoryMatch "<%= @docroot %>(assets|css|images|js|upload)">
+        # Forbid execution of PHP scripts
+        #php_admin_flag engine off
+        # Forbid listing of files
+        Options -Indexes
+        </DirectoryMatch>
+        <% end -%>
 </VirtualHost>

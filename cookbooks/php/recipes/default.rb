@@ -12,6 +12,14 @@ end
 apt_update 'apt-get-update' do
   action :update
 end
+
+node['php']['packages'].each do |pkg|
+ package pkg do
+   action :install
+   flush_cache before: true
+ end
+end
+
 end
 
 if node['platform'] == 'centos'
@@ -47,14 +55,12 @@ if "#{node['php']['version']}" == '5.6'
   end
 end
 
+package %w(php-devel php-fpm php-bcmath php-dba php-enchant php-gd php-imap php-intl php-ldap php-mbstring php-mcrypt php-mysql php-odbc php-pgsql php-snmp php-soap php-tidy php-xml) do
+  action :install
+  flush_cache before: true
+end
 end
 
-node['php']['packages'].each do |pkg|
- package pkg do
-   action :install
-   flush_cache before: true
- end
-end
 
 execute 'start & enable service' do
   if node['platform'] == 'ubuntu'

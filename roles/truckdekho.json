@@ -8,12 +8,54 @@
          },
         "users": {
               "name": "truckdekho"
-        }
-        
+        },
+        "httpd": [
+        {
+           "vhost": {
+            	"docroot": "/data/truckdekho/girnarsoft-trucksdekho/backend/web",
+            	"main_domain": "cvadmin.cardekho.com",
+            	"access_log": "cvadmin.cardekho.com-access_log",
+              "error_log": "cvadmin.cardekho.com-error.log",
+              "rewrite_rule": false,
+              "directory_match": true
+            }
+         },
+         {
+            "vhost": {
+            	"docroot": "/data/truckdekho/girnarsoft-trucksdekho/api",
+            	"main_domain": "cvapi.cardekho.com",
+            	"aliases": ["api.trucksdekho.com"],
+            	"access_log": "cvapi-access_log",
+            	"error_log": "cvapi-error.log",
+              "rewrite_rule": false,
+              "directory_match": false
+            }
+         },
+         {
+            "vhost": {
+                "docroot": "/data/truckdekho/girnarsoft-trucksdekho/images",
+                "main_domain": "cvimg1.cardekho.com",
+                "access_log": "cvimages-access_log",
+                "error_log": "cvimages-error",
+                "rewrite_rule": true,
+                "directory_match": false
+            }
+          },
+          {
+            "vhost": {
+                "docroot": "/data/truckdekho/girnarsoft-trucksdekho/frontend/web",
+                "main_domain": "trucks.cardekho.com",
+                "aliases": ["trucksdekho.com www.trucksdekho.com www.trucksdekho.in trucksdekho.in"],
+                "access_log": "trucks.cardekho.com-access_log",
+                "error_log": "trucks.cardekho.com-error.log",
+                "rewrite_rule": true,
+                "directory_match": true
+            }
+         }
+         ]
    },
   "chef_type": "role",
   "run_list": [
-     "recipe[users]"
+     "recipe[httpd::truckdekho-conf]"
   ]
 }
-

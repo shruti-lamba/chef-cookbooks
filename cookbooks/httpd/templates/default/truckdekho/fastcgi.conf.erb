@@ -1,0 +1,22 @@
+#<FilesMatch \.php$>
+#SetHandler "proxy:fcgi://127.0.0.1:9000"
+#</FilesMatch>
+#<IfModule fcgid_module>
+#FcgidIdleTimeout 600
+#FcgidProcessLifeTime 600
+#FcgidConnectTimeout 600
+#cgidIOTimeout 600
+#</IfModule>
+
+
+
+
+# Proxy declaration
+<Proxy "fcgi://127.0.0.1:9000">
+        ProxySet timeout=400
+</Proxy>
+
+# Redirect to the proxy
+<FilesMatch \.php$>
+    SetHandler "proxy:fcgi://127.0.0.1:9000"
+</FilesMatch>

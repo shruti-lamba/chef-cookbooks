@@ -16,6 +16,8 @@ DEPENDENCIES
   hostsfile (~> 3.0.1)
   httpd
     path: cookbooks/httpd
+  java
+    path: cookbooks/java
   limits
     path: cookbooks/limits
   mongodb
@@ -64,6 +66,7 @@ GRAPH
     hostsfile (>= 0.0.0)
   hostsfile (3.0.1)
   httpd (0.1.0)
+  java (0.1.0)
   limits (0.1.0)
   mingw (2.0.1)
     seven_zip (>= 0.0.0)
@@ -89,6 +92,6 @@ GRAPH
     ohai (>= 4.0)
   timezone (0.1.0)
   users (0.1.0)
-  windows (3.4.0)
+  windows (3.4.2)
     ohai (>= 4.0.0)
   zabbix (0.1.0)

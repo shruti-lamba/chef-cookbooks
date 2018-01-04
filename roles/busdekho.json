@@ -14,30 +14,38 @@
            "vhost": {
             	"docroot": "/data/busdekho/production/backend/web",
             	"main_domain": "busadmin.cardekho.com",
-                "aliases": ["test.com"],
             	"access_log": "busadmin.cardekho-access_log",
-                "error_log": "busadmin.cardekho-error_log"
-            },
+              "error_log": "busadmin.cardekho-error_log",
+              "rewrite_rule": false
+            }
+         },
+         {
             "vhost": {
             	"docroot": "/data/busdekho/production/api",
             	"main_domain": "busapi.cardekho.com",
             	"aliases": ["api.busesdekho.com"],
             	"access_log": "busapi-access_log",
-            	"error_log": "busapi-error_log"
-            },
+            	"error_log": "busapi-error_log",
+              "rewrite_rule": false
+            }
+         },
+         {
             "vhost": {
                 "docroot": "/data/busdekho/production/frontend/web",
                 "main_domain": "buses.cardekho.com",
                 "aliases": ["www.busesdekho.com", "busesdekho.com", "www.busesdekho.in", "busesdekho.in"],
                 "access_log": "buses.cardekho.com-access_log",
-                "error_log": "buses.cardekho.com-error.log"
-            },
+                "error_log": "buses.cardekho.com-error.log",
+                "rewrite_rule": false
+            }
+          },
+          {
             "vhost": {
                 "docroot": "/data/busdekho/production/images",
                 "main_domain": "busimg.cardekho.com",
-                "aliases": ["test.com"],
                 "access_log": "busimg-error_log",
-                "error_log": "busimg-access_log"
+                "error_log": "busimg-access_log",
+                "rewrite_rule": true
             }
          }
          ]
@@ -47,4 +55,3 @@
      "recipe[httpd::busdekho-conf]"
   ]
 }
-

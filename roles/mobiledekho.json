@@ -7,11 +7,51 @@
               "version": "7.1"
          },
         "users": {
-              "name": "truckdekho"
-        }
+              "name": "mobiledekho"
+        },
+        "nginx": [
+        {
+           "vhost": {
+            	"docroot": "/data/mobiledekho/web/production/public_html/indailytech/admin",
+            	"main_domain": ["localhost", "www.mobiledekho.com", "mobiledekho.com", "35.154.183.201"],
+              "access_log": "/var/log/nginx/access.log",
+              "error_log": "/var/log/nginx/error.log",
+              "rewrite_rule": false
+            }
+         },
+         {
+            "vhost": {
+            	"docroot": "/data/mobiledekho/web/production/public_html/indailytech/mobiledekho/coreapi/web/",
+            	"main_domain": ["api.mobiledekho.com" "1.0.10.147"],
+              "aliases": ["api.mobiledekho.com" "1.0.10.147"],
+            	"access_log": "/var/log/nginx/api_access.log",
+            	"error_log": "/var/log/nginx/api_error.log",
+              "rewrite_rule": false
+            }
+         },
+         {
+            "vhost": {
+                "docroot": "/data/mobiledekho/web/production/public_html/indailytech/mobiledekho/frontend/web",
+                "main_domain": "img.mobiledekho",
+                "aliases": ["images.mobiledekho.com", "img.mobiledekho.com"],
+                "access_log": "/var/log/nginx/img_access.log",
+                "error_log": "/var/log/nginx/img_error.log",
+                "rewrite_rule": false
+            }
+          },
+          {
+            "vhost": {
+                "docroot": "/data/mobiledekho/web/staging/public_html/indailytech/mobiledekho/coreapi/web/",
+                "main_domain": "stagingapi.mobiledekho",
+                "aliases": ["stagingapi.mobiledekho.com"],
+                "access_log": "/var/log/nginx/stagingapi_access.log",
+                "error_log": "/var/log/nginx/stagingapi_error.log",
+                "rewrite_rule": true
+            }
+         }
+         ]
    },
   "chef_type": "role",
   "run_list": [
   ]
 }
-
