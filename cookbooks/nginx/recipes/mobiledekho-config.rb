@@ -32,7 +32,7 @@ template '/etc/nginx/nginx.conf' do
 end
 
 template '/etc/nginx/fastcgi.conf' do
-  source 'mobiledekho/fastcgi.conf'
+  source 'mobiledekho/fastcgi.conf.erb'
   owner 'root'
   group 'root'
   mode 00744
