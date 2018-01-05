@@ -2,31 +2,34 @@
   "name": "mobiledekho",
   "description": "",
   "json_class": "Chef::Role",
-  "override_attributes": {
+  "default_attributes": {
         "php": {
               "version": "7.1"
          },
-        "users": {
-              "name": "mobiledekho"
-        },
         "nginx": [
         {
            "vhost": {
             	"docroot": "/data/mobiledekho/web/production/public_html/indailytech/admin",
-            	"main_domain": ["localhost", "www.mobiledekho.com", "mobiledekho.com", "35.154.183.201"],
+            	"main_domain": "000-mobiledekho",
+              "aliases": ["localhost", "www.mobiledekho.com", "mobiledekho.com", "35.154.183.201"],
               "access_log": "/var/log/nginx/access.log",
               "error_log": "/var/log/nginx/error.log",
-              "rewrite_rule": false
+              "rewrite_rule": true,
+              "location_50x": "/home/mobiledekho/public_html",
+              "jpg_rule": false,
+              "mobile_rule_root": "/data/mobiledekho/web/production/public_html/indailytech/mobiledekho/frontend/web"
             }
          },
          {
             "vhost": {
             	"docroot": "/data/mobiledekho/web/production/public_html/indailytech/mobiledekho/coreapi/web/",
-            	"main_domain": ["api.mobiledekho.com" "1.0.10.147"],
-              "aliases": ["api.mobiledekho.com" "1.0.10.147"],
+            	"main_domain": "api.mobiledekho",
+              "aliases": ["api.mobiledekho.com", "1.0.10.147"],
             	"access_log": "/var/log/nginx/api_access.log",
             	"error_log": "/var/log/nginx/api_error.log",
-              "rewrite_rule": false
+              "rewrite_rule": false,
+              "location_50x": "/data/mobiledekho/web/api",
+              "jpg_rule": false
             }
          },
          {
@@ -36,7 +39,9 @@
                 "aliases": ["images.mobiledekho.com", "img.mobiledekho.com"],
                 "access_log": "/var/log/nginx/img_access.log",
                 "error_log": "/var/log/nginx/img_error.log",
-                "rewrite_rule": false
+                "rewrite_rule": true,
+                "location_50x": "/home/images/public_html",
+                "jpg_rule": true
             }
           },
           {
@@ -46,12 +51,40 @@
                 "aliases": ["stagingapi.mobiledekho.com"],
                 "access_log": "/var/log/nginx/stagingapi_access.log",
                 "error_log": "/var/log/nginx/stagingapi_error.log",
-                "rewrite_rule": true
+                "rewrite_rule": false,
+                "location_50x": "/data/mobiledekho/web/api",
+                "jpg_rule": false
+            }
+         },
+         {
+            "vhost": {
+                "docroot": "/data/mobiledekho/web/staging/public_html/indailytech/mobiledekho/frontend/web",
+                "main_domain": "stagingimg.mobiledekho",
+                "aliases": ["www.stagingimg.mobiledekho.com", "stagingimg.mobiledekho.com"],
+                "access_log": "/var/log/nginx/stagingimg_access.log",
+                "error_log": "/var/log/nginx/stagingimg_error.log",
+                "rewrite_rule": false,
+                "location_50x": "/home/images/public_html",
+                "jpg_rule": true
+            }
+          },
+          {
+            "vhost": {
+                "docroot": "/data/mobiledekho/web/staging/public_html/indailytech/admin",
+                "main_domain": "staging.mobiledekho",
+                "aliases": ["www.staging.mobiledekho.com", "staging.mobiledekho.com"],
+                "access_log": "/var/log/nginx/access.log",
+                "error_log": "/var/log/nginx/error.log",
+                "rewrite_rule": false,
+                "location_50x": "/home/mobiledekho/public_html",
+                "jpg_rule": false,
+                "mobile_rule_root": "/data/mobiledekho/web/staging/public_html/indailytech/mobiledekho/frontend/web"
             }
          }
          ]
    },
   "chef_type": "role",
   "run_list": [
+    "recipe[nginx::mobiledekho-config]"
   ]
 }
