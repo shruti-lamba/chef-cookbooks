@@ -24,6 +24,20 @@ node['nginx'].each do |h|
       end
 end
 
+template '/etc/nginx/nginx.conf' do
+  source 'mobiledekho/nginx.conf.erb'
+  owner 'root'
+  group 'root'
+  mode 00744
+end
+
+template '/etc/nginx/fastcgi.conf' do
+  source 'mobiledekho/fastcgi.conf'
+  owner 'root'
+  group 'root'
+  mode 00744
+end
+
 service 'nginx' do
   action :restart
 end
