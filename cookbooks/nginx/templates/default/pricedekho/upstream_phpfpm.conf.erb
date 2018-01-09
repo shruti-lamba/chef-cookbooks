@@ -1,0 +1,5 @@
+upstream phpfpm {
+    #server unix:/var/run/php5-fpm.sock;
+    #avoid sockets for nginx-fpm on Linux, they are good for BSD
+    server 127.0.0.1:9000;
+}

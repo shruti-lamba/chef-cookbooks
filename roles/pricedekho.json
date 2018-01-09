@@ -5,10 +5,102 @@
   "override_attributes": {
         "php": {
               "version": "7.1"
-         }
+         },
+         "nginx": [
+         {
+            "vhost": {
+               "docroot": "/data/pricedekho/www/html/mainsite",
+               "main_domain": "www.pricedekho.com",
+               "aliases": ["www.pricedekho.com"],
+               "access_log": "/var/log/nginx/pricedekho_access.log",
+               "error_log": "/var/log/nginx/pricedekho_error.log",
+               "new_rule": true
+             }
+          },
+          {
+             "vhost": {
+               "docroot": "/data/pricedekho/www/html/mainsite",
+               "main_domain": "asset2.pricedekho.com",
+               "aliases": ["www.asset2.pricedekho.com"],
+               "access_log": "/var/log/nginx/asset_pricedekho_access.log",
+               "error_log": "/var/log/nginx/asset_pricedekho_error.log",
+               "new_rule": false
+             }
+          },
+          {
+             "vhost": {
+                 "docroot": "/data/pricedekho/www/html/mainsite",
+                 "main_domain": "api.pricedekho.com",
+                 "aliases": ["api.pricedekho.com"],
+                 "access_log": "/var/log/nginx/pricedekhoapi_access.log",
+                 "error_log": "/var/log/nginx/pricedekhoapi_error.log",
+                 "new_rule": false
+             }
+           },
+           {
+             "vhost": {
+                 "docroot": "/data/pricedekho/www/html/mainsite",
+                 "main_domain": "redirect.pricedekho.com",
+                 "aliases": ["redirect.pricedekho.com"],
+                 "access_log": "/var/log/nginx/redirect.pricedekho_access.log",
+                 "error_log": "/var/log/nginx/redirect.pricedekho_error.log",
+                 "new_rule": false
+             }
+          },
+           {
+              "vhost": {
+                  "docroot": "/data/pricedekho/www/html/buyingiqphp/buyingIQ/backend/web",
+                  "main_domain": "backend.buyingiq.com",
+                  "aliases": ["backend.buyingiq.com"],
+                  "access_log": "/var/log/nginx/buying_backend_access.log",
+                  "error_log": "/var/log/nginx/buying_backend_error.log",
+                  "new_rule": false
+              }
+            },
+            {
+              "vhost": {
+                  "docroot": "/data/pricedekho/www/html/blog",
+                  "main_domain": "blog.pricedekho.com",
+                  "aliases": ["blog.pricedekho.com"],
+                  "access_log": "/var/log/nginx/blog_access.log",
+                  "error_log": "/var/log/nginx/blog_error.log",
+                  "new_rule": false
+              }
+           },
+           {
+              "vhost": {
+                 "docroot": "//data/pricedekho/www/html/mainsite/hopshop",
+                 "main_domain": "hopshop.co.in",
+                 "aliases":["hopshop.co.in", "www.hopshop.co.in"],
+                 "access_log": "/var/log/nginx/hopshop_access.log",
+                 "error_log": "/var/log/nginx/hopshop_error.log",
+                 "new_rule": false
+               }
+            },
+            {
+               "vhost": {
+                 "docroot": "/data/pricedekho/www/html/mainsite",
+                 "main_domain": " www2.pricedekho.com",
+                 "aliases": ["www2.pricedekho.com"],
+                 "access_log": "/var/log/nginx/www2.pricedekho_access.log",
+                 "error_log": "/var/log/nginx/www2.pricedekho_error.log",
+                 "new_rule": false
+               }
+            },
+            {
+               "vhost": {
+                   "docroot": "/data/pricedekho/www/html/mainsite",
+                   "main_domain": "buyingiq.com",
+                   "aliases": ["buyingiq.com", "www.buyingiq.com", "images.buyingiq.com"],
+                   "access_log": "/var/log/nginx/buyingiq_access.log",
+                   "error_log": "/var/log/nginx/buyingiq_error.log",
+                   "new_rule": false
+               }
+             }
+          ]
    },
   "chef_type": "role",
   "run_list": [
+    "recipe[nginx::pricedekho-config]"
   ]
 }
-

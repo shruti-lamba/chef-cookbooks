@@ -9,7 +9,7 @@ server {
     listen       80;
     listen       [::]:80;
 
-    server_name  <%= @main_domain %>;
+    server_name  <%= @server_aliases.join " " %>;
 
     root         <%= @docroot %>;
     index        index.php index.html index.htm;

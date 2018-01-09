@@ -8,10 +8,10 @@ node['nginx'].each do |h|
         variables(
           :server_aliases => v['aliases'],
           :docroot => v['docroot'],
-          :aliases => v['aliases']
+          :aliases => v['aliases'],
           :access_log => v['access_log'],
           :error_log => v['error_log'],
-          :new_rule => v['rewrite_rule'],
+          :new_rule => v['new_rule'],
         )
       end
 end
