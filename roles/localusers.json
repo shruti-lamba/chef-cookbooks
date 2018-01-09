@@ -1,0 +1,25 @@
+{
+  "name": "localusers",
+  "description": "create users on nodes",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+        "users": [
+        {
+           "user_attributes": {
+            	"username": "test1",
+            	"pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMP7FleQN60EQNz77yXpaaJrdbhkmTWwq3Y3w+F0kAB42XiK0ynJSVKAcabdvaiBS795dodO/3Oo3EbZprbY16JNDVhLG17NNbQ9EGjAsJwPIzlTJTt8l2vORiHM4AmvjLymLVy9/xmNUNtUmtE5QhN1rEllxfWSaa6CNXQzm+sa9MIAUTVO2DEvXJYk/l4PkLlvKi7f0Lw6Cig7k02G8FaE5b471iOuBjwW5CBOwkMJp7ZUNYWEv6ZMl1o8BBPNmmFs4kG4E4mM/HwlDRukXuYhNuiIEKcR7sw1IMYqCnXHTTcfx+vCB/GXcHmyCQ5fv022CrzngEQ/DQZne7GI4h shruti@ttn"
+            }
+         },
+         {
+            "user_attributes": {
+             	"username": "test2",
+             	"pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMP7FleQN60EQNz77yXpaaJrdbhkmTWwq3Y3w+F0kAB42XiK0ynJSVKAcabdvaiBS795dodO/3Oo3EbZprbY16JNDVhLG17NNbQ9EGjAsJwPIzlTJTt8l2vORiHM4AmvjLymLVy9/xmNUNtUmtE5QhN1rEllxfWSaa6CNXQzm+sa9MIAUTVO2DEvXJYk/l4PkLlvKi7f0Lw6Cig7k02G8FaE5b471iOuBjwW5CBOwkMJp7ZUNYWEv6ZMl1o8BBPNmmFs4kG4E4mM/HwlDRukXuYhNuiIEKcR7sw1IMYqCnXHTTcfx+vCB/GXcHmyCQ5fv022CrzngEQ/DQZne7GI4h shruti@ttn"
+             }
+          }
+         ]
+   },
+  "chef_type": "role",
+  "run_list": [
+     "recipe[users::localusers]"
+  ]
+}
