@@ -1,5 +1,5 @@
 group 'superuser' do
-  gid 1004
+  gid 1200
 end
 
 node['users'].each do |user|
@@ -13,7 +13,7 @@ node['users'].each do |user|
           shell '/bin/bash'
           home  home
           manage_home true
-          gid 1004
+          gid 1200
     end
 
     directory "#{home}/.ssh" do
