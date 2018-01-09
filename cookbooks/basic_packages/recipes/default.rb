@@ -59,3 +59,14 @@ execute 'start and enable ssm agent' do
   command 'sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent'
   action :run
 end
+
+if node['platform'] == 'ubuntu'
+  execute 'enable sysstat' do
+    command "sed -i 's/false/true/' /etc/default/sysstat"
+    only_if "grep 'false' /etc/default/sysstat"
+  end
+
+  service 'sysstat' do
+    action :restart
+  end
+end

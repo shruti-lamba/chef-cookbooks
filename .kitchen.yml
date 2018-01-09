@@ -7,8 +7,8 @@ provisioner:
   require_chef_omnibus: 13.2.20
   roles_path: roles/
 platforms:
-#  - name: ubuntu-16.04
-   - name: centos-7.3
+  - name: ubuntu-16.04
+#   - name: centos-7.3
 
 suites:
   - name: abcd
@@ -22,7 +22,7 @@ suites:
 #      - recipe[chrony::default]
 #      - recipe[filebeat::default]
 #       - recipe[basic_packages::update]
-#       - recipe[basic_packages]
+       - recipe[basic_packages]
 #       - recipe[nginx::default]
 #      - recipe[php::default]
 #       - recipe[node::default]
@@ -39,5 +39,5 @@ suites:
 #       - role[nginx]
 #      - recipe[httpd::truckdekho-common-conf]
 #      - recipe[rabbitmq::default]
-       - role[mobiledekho]
+#       - role[mobiledekho]
     attributes:
