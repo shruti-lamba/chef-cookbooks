@@ -7,12 +7,12 @@
 
 #hname = node['ec2']['tags']['Name']
 if node['platform'] ==  'centos'
-  hostsfile_entry '127.0.1.1' do
+  hostsfile_entry "#{node['ipaddress']}" do
     hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
     unique true
   end
 
-  hostsfile_entry '127.0.1.1' do
+  hostsfile_entry "#{node['ipaddress']}" do
     hostname  "#{node['ec2']['tags']['Name']}"
     action :append
   end
@@ -35,12 +35,12 @@ execute 'set hostname' do
   action :run
 end
 
-hostsfile_entry '127.0.1.1' do
+hostsfile_entry "#{node['ipaddress']}" do
   hostname  "#{node['ec2']['tags']['Name']}.girnarsoft.net"
   unique    true
 end
 
-hostsfile_entry '127.0.1.1' do
+hostsfile_entry "#{node['ipaddress']}" do
   hostname  "#{node['ec2']['tags']['Name']}"
   action :append
 end
