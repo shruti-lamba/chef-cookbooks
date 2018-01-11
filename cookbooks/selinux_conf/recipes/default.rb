@@ -7,4 +7,10 @@ if node['platform'] == 'centos'
   selinux_state "SELinux disable" do
   action :disabled
 end
+
+execute 'selinux permissive' do
+  command 'setenforce 0'
+  action :run
+  only_if "getenforce | grep Enforcing"
+end
 end
