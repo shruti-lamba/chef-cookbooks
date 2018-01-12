@@ -19,4 +19,4 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 #
 # source_url 'https://github.com/<insert_org_here>/attach_ebs'
 
-depends 'aws', '~> 5.0.1'
+depends 'aws', '~> 8.0.0'
