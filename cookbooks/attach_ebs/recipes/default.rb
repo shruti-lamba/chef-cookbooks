@@ -6,6 +6,7 @@
 #include_recipe 'aws_volume'
 
 #include Aws::Ec2
+include_recipe 'aws'
 
 aws_ebs_volume 'data_ebs_volume' do
   size 30
