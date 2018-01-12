@@ -17,6 +17,19 @@ aws_ebs_volume 'data_ebs_volume' do
   action [:create, :attach]
 end
 
+directory '/data' do
+  owner 'root'
+  group 'root'
+  mode 00755
+  recursive true
+  action :create
+end
+
+mount '/dev/xvdf' do
+  fstype 'ext4'
+  mount_point '/data'
+  action [:mount, :enable]
+end
 #aws_volume_ebs_volume "data_ebs_volume" do
 #	size 30#
 #device "/dev/sda"
