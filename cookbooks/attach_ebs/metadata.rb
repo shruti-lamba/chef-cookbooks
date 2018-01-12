@@ -18,6 +18,6 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/attach_ebs'
-gem 'aws-sdk', '2.10.47'
+gem 'aws-sdk', '~> 3'
 depends 'aws', '~> 5.0.1'
 #depends 'aws_volume'
