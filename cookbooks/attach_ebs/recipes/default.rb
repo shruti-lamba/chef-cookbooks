@@ -8,6 +8,8 @@
 #include Aws::Ec2
 include_recipe 'aws'
 
+include_recipe 'aws::ec2_hints'
+
 aws_ebs_volume 'data_ebs_volume' do
   size 30
   device '/dev/sdf'
