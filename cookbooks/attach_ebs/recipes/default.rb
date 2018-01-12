@@ -25,10 +25,16 @@ directory '/data' do
   action :create
 end
 
-mount '/dev/xvdf' do
-  fstype 'ext4'
-  mount_point '/data'
-  action [:mount, :enable]
+execute 'make filesystem' do
+  command 'sudo file -s /dev/xvdf'
+  action :run
+  not_if "file -s /dev/xvdf | grep ext4"
+end
+
+execute 'fstab entry' do
+  command "echo '/dev/xvdf /data ext4 defaults 0 0' >> /etc/fstab"
+  action :run
+  not_if 'cat /etc/fstab|grep /dev/xvdf'
 end
 #aws_volume_ebs_volume "data_ebs_volume" do
 #	size 30#
