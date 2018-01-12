@@ -3,10 +3,11 @@
 # Recipe:: default
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
-include_recipe "aws"
+include_recipe 'aws'
 
 aws_ebs_volume 'data_ebs_volume' do
   size 30
   device '/dev/sdf'
+  volume_type "gp2"
   action [:create, :attach]
 end
