@@ -35,6 +35,12 @@ execute 'make filesystem' do
   not_if "file -s /dev/xvdf | grep ext4"
 end
 
+execute 'mount ebs' do
+  command 'mount /dev/xvdf /data'
+  action :run
+  not_if "df -h|grep xvdf"
+end
+
 execute 'fstab entry' do
   command "echo '/dev/xvdf /data ext4 defaults 0 0' >> /etc/fstab"
   action :run
