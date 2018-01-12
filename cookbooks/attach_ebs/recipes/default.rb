@@ -30,7 +30,7 @@ directory '/data' do
 end
 
 execute 'make filesystem' do
-  command 'sudo file -s /dev/xvdf'
+  command 'sudo mkfs -t ext4 /dev/xvdf'
   action :run
   not_if "file -s /dev/xvdf | grep ext4"
 end
